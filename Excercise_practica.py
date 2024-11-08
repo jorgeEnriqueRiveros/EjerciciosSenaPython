@@ -47,7 +47,7 @@ while True:
     if contador > valor_max:
         break
 print(f'------------Switch o segun-------------------')
-number_entered = int(input("Por favor ingresa un numero para el menu"))
+number_entered = int(input(f"Por favor ingresa un numero para el menu: "))
 if number_entered == 1:
     print("Opcion 1 del menu: ")
 elif number_entered == 2:
@@ -56,3 +56,15 @@ elif number_entered == 3:
     print("Opcion 3 del menu: ")
 elif number_entered == 4:
     print("Opcion 4 del menu: ")
+print(f'----------Ciclo For con range de 0 a 5-----------')
+for i in range(5+1):
+    print(i)
+print(f'-------------ciclo for con una cadena sin salto de linea-------------')
+
+for i in "Software":
+    print(i, end="")
+print("")
+print(f'-------------ciclo for con una lista---------------------')
+list_number = [3,5,15,18,21,24]
+for i in list_number:
+    print(i,end="")
