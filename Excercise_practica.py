@@ -1,5 +1,3 @@
-
-
 a , b = 33, 1991
 a = a + 1
 print("esta es la secuencia de a",a)
@@ -68,3 +66,29 @@ print(f'-------------ciclo for con una lista---------------------')
 list_number = [3,5,15,18,21,24]
 for i in list_number:
     print(i,end="")
+print("")
+print(f'-------Impresion de una lista-------------')
+numeros = [20,33,50,70,19,16,5]
+print(f'Esta es una lista de numeros: {numeros}')
+print(f'------Accediendo a un indice---------')
+print(f'El valor del indice 4 = {numeros[4]}')
+print(f'-------cambiando datos de una lista--------')
+numeros[1] = 100
+print(f'Esta es una lista de numeros: {numeros}')
+print(f'-------cambiando datos del indice por consola:')
+indice = int(input('Por favor ingresa el indice que quieres modificar: '))
+numeros[indice] = 203
+print(f'Esta es la lista modificando el valor por consola: {numeros}')
+print(f'--------sumando un valor a un indice-----------------')
+numeros[2] = numeros[2] + 300
+print(f'Esta es la lista modificando el valor por consola: {numeros}')
+print(f'El valor del indice 3 = {numeros[3]}')
+print(f'---------Impresion de la lista con ciclo for-----------------')
+for i in enumerate(numeros):
+    print(f'{i}')
+print(f'----------Impresion de la lista del indice y el valor--------')
+for i,valor in enumerate(numeros):
+    print(f'indice {i} = {valor}')
+
+
+
