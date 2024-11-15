@@ -70,25 +70,25 @@ print("")
 print(f'-------Impresion de una lista-------------')
 numeros = [20,33,50,70,19,16,5]
 print(f'Esta es una lista de numeros: {numeros}')
-print(f'------Accediendo a un indice---------')
-print(f'El valor del indice 4 = {numeros[4]}')
+print(f'------Accediendo a un purchasing_index---------')
+print(f'El valor del purchasing_index 4 = {numeros[4]}')
 print(f'-------cambiando datos de una lista--------')
 numeros[1] = 100
 print(f'Esta es una lista de numeros: {numeros}')
-print(f'-------cambiando datos del indice por consola:')
-indice = int(input('Por favor ingresa el indice que quieres modificar: '))
+print(f'-------cambiando datos del purchasing_index por consola:')
+indice = int(input('Por favor ingresa el purchasing_index que quieres modificar: '))
 numeros[indice] = 203
 print(f'Esta es la lista modificando el valor por consola: {numeros}')
-print(f'--------sumando un valor a un indice-----------------')
+print(f'--------sumando un valor a un purchasing_index-----------------')
 numeros[2] = numeros[2] + 300
 print(f'Esta es la lista modificando el valor por consola: {numeros}')
-print(f'El valor del indice 3 = {numeros[3]}')
+print(f'El valor del purchasing_index 3 = {numeros[3]}')
 print(f'---------Impresion de la lista con ciclo for-----------------')
 for i in enumerate(numeros):
     print(f'{i}')
-print(f'----------Impresion de la lista del indice y el valor--------')
+print(f'----------Impresion de la lista del purchasing_index y el valor--------')
 for i,valor in enumerate(numeros):
-    print(f'indice {i} = {valor}')
+    print(f'purchasing_index {i} = {valor}')
 
 
 
