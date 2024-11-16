@@ -29,6 +29,7 @@ rating_search = float(input("\nIngrese la calificación a buscar: "))  # Solicit
 
 if rating_search in list_grades:  # Verifica si la calificación ingresada está en la lista de calificaciones.
     print(f"La calificación {rating_search} se encontró en la lista.")  # Si se encuentra, imprime un mensaje indicando que la calificación está presente.
+if rating_search in list_grades:
     print(f"Aparece {list_grades.count(rating_search)} veces.")  # Cuenta cuántas veces aparece la calificación en la lista usando la función count() y la muestra.
 else:
     print(f"La calificación {rating_search} no se encontró en la lista.")  # Si no se encuentra, imprime un mensaje indicando que la calificación no está en la lista.
