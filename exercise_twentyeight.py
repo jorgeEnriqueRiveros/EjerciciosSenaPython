@@ -1,5 +1,5 @@
 # Paso 1: Crear una lista de productos
-list_products = ['manzanas','bananas','peras','uvas','naranjas']
+list_products = ['manzanas','bananos','peras','uvas','naranjas']
 print(f'Inventario inicial \n'
       f'{list_products}')
 print(f'')
