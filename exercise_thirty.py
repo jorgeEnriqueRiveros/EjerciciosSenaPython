@@ -4,7 +4,7 @@ number_students = int(input("Ingrese el número de estudiantes: "))  # Solicita 
 
 for i in range(number_students):  # Comienza un bucle que se ejecutará 'number_students' veces, una por cada estudiante.
     while True:  # Inicia un bucle interno que continuará hasta que se ingrese una calificación válida.
-        entered_grade = float(input(f"Ingrese la calificación del estudiante {i + 1} (0-10): "))  # Solicita la calificación del estudiante actual y la convierte en un número de punto flotante (float).
+        entered_grade = float(input(f"Ingrese la calificación del estudiante {i+1} (0-10): "))  # Solicita la calificación del estudiante actual y la convierte en un número de punto flotante (float).
         if 0 <= entered_grade <= 10:  # Verifica que la calificación esté en el rango de 0 a 10 (inclusive).
             list_grades.append(entered_grade)  # Si la calificación es válida, la agrega a la lista de calificaciones.
             break  # Sale del bucle interno, ya que se ha ingresado una calificación válida.
@@ -12,7 +12,8 @@ for i in range(number_students):  # Comienza un bucle que se ejecutará 'number_
             print("Calificación inválida. Ingrese un valor entre 0 y 10.")  # Si la calificación no es válida, muestra un mensaje de error.
 
 # Mostrar lista de calificaciones
-print("\nLista de calificaciones:", list_grades)  # Imprime la lista completa de calificaciones de todos los estudiantes.
+print(f"Lista de calificaciones: \n"
+      f"{list_grades}")  # Imprime la lista completa de calificaciones de todos los estudiantes.
 
 # Calcular estadísticas
 highest_rating = max(list_grades)  # Encuentra la calificación más alta de la lista usando la función max().
