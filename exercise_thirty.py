@@ -27,9 +27,9 @@ print(f"Promedio: {average_grade:.2f}")  # Imprime el promedio de las calificaci
 # Buscar una calificación
 rating_search = float(input("\nIngrese la calificación a buscar: "))  # Solicita una calificación a buscar.
 if rating_search in list_grades:  # Verifica si la calificación está en la lista.
-    count = list_grades.count(rating_search)  # Cuenta cuántas veces aparece la calificación en la lista.
-    if count > 1:  # Si aparece más de una vez.
-        print(f"La calificación {rating_search} se encontró en la lista y está repetida {count} veces.")
+    amount_notes = list_grades.count(rating_search)  # Cuenta cuántas veces aparece la calificación en la lista.
+    if amount_notes > 1:  # Si aparece más de una vez.
+        print(f"La calificación {rating_search} se encontró en la lista y está repetida {amount_notes} veces.")
     else:  # Si aparece solo una vez.
         print(f"La calificación {rating_search} se encontró en la lista.")
 else:  # Si no se encuentra la calificación.
