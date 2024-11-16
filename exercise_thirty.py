@@ -25,14 +25,15 @@ print(f"Calificación mínima: {minimum_rating}")  # Imprime la calificación m�
 print(f"Promedio: {average_grade:.2f}")  # Imprime el promedio de las calificaciones, formateado a dos decimales.
 
 # Buscar una calificación
-rating_search = float(input("\nIngrese la calificación a buscar: "))  # Solicita una calificación a buscar en la lista y la convierte a un número de punto flotante.
-
-if rating_search in list_grades:  # Verifica si la calificación ingresada está en la lista de calificaciones.
-    print(f"La calificación {rating_search} se encontró en la lista.")  # Si se encuentra, imprime un mensaje indicando que la calificación está presente.
-if rating_search in list_grades:
-    print(f"Aparece {list_grades.count(rating_search)} veces.")  # Cuenta cuántas veces aparece la calificación en la lista usando la función count() y la muestra.
-else:
-    print(f"La calificación {rating_search} no se encontró en la lista.")  # Si no se encuentra, imprime un mensaje indicando que la calificación no está en la lista.
+rating_search = float(input("\nIngrese la calificación a buscar: "))  # Solicita una calificación a buscar.
+if rating_search in list_grades:  # Verifica si la calificación está en la lista.
+    count = list_grades.count(rating_search)  # Cuenta cuántas veces aparece la calificación en la lista.
+    if count > 1:  # Si aparece más de una vez.
+        print(f"La calificación {rating_search} se encontró en la lista y está repetida {count} veces.")
+    else:  # Si aparece solo una vez.
+        print(f"La calificación {rating_search} se encontró en la lista.")
+else:  # Si no se encuentra la calificación.
+    print(f"La calificación {rating_search} no se encontró en la lista.")# Si no se encuentra, imprime un mensaje indicando que la calificación no está en la lista.
 
 # Ordenar las calificaciones
 sorted_grades = sorted(list_grades)  # Ordena las calificaciones de menor a mayor utilizando la función sorted().
