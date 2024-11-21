@@ -49,7 +49,8 @@ while True:  # Simulación de un do-while
             if product_value[0].lower() == product_name:
                 # Si se encuentra, muestra los detalles del producto
                 print(f'Producto encontrado: \n'
-                      f'nombre del producto: {product_value[0]}, precio del producto: {product_value[1]}, cantidad del producto: {product_value[2]}')
+                      f'nombre del producto: \n'
+                      f'{product_value[0]}, precio del producto: {product_value[1]}, cantidad del producto: {product_value[2]}')
                 product_found = True
                 break
         # Si no se encuentra el producto, muestra un mensaje correspondiente
