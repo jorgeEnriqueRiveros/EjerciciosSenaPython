@@ -94,7 +94,7 @@ if key_entered in dic_values1.keys():
 else:
     print(f'La clave no encontrada intentalo de nuevo')
 
-# Usamos `enumerate` para iterar sobre el diccionario, mostrando el índice y la clave
+# Usamos (enumerate): para iterar sobre el diccionario, mostrando el índice y la clave
 for i, claves in enumerate(dic_values1.keys()):
     print(f'{i} = {claves} | {dic_values1[claves]}')
 
