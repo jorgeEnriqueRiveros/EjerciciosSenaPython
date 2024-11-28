@@ -197,7 +197,7 @@ print(f'Este es el diccionario eliminando la clave 6:\n'
 #Utilizando metodo popitem que elimina el ultimo valor del diccionario
 print(f'Elimina el ultimo item eliminado del diccionario {dictionary_numbers.popitem()}')
 #Utilizando metodo clear que elimina todos los datos del diccionario dejándolo vacio
-#print(f'Eliminando todo lo del diccionario {dictionary_numbers.clear()}')
+print(f'Eliminando todo lo del diccionario {dictionary_numbers.clear()}')
 #Usando metodo para crear una copia del diccionario actual una copia
 dict_copy = dictionary_numbers.copy()
 print(f'Esta es una copia del diccionario {dict_copy}')
