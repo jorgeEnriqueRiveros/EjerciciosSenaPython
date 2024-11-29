@@ -174,26 +174,52 @@ while True:
 
     elif notebook_menu == 11:  # Eliminar un contacto por nombre
         delete_name = input("Ingresa el nombre del contacto a eliminar: ").strip()
-        removed = [contact for contact in contact_list if contact["Nombre"].lower() == delete_name.lower()]
-        contact_list = [contact for contact in contact_list if contact["Nombre"].lower() != delete_name.lower()]
-        if removed:
-            for contact in removed:
-                print(f'Contacto eliminado: {contact}')
+        matching_contacts = [contact for contact in contact_list if contact["Nombre"].lower() == delete_name.lower()]
+
+        if matching_contacts:
+            print(f"Se encontraron {len(matching_contacts)} contacto(s) con el nombre '{delete_name}':")
+            for i, contact in enumerate(matching_contacts):
+                print(f"{i + 1}. Nombre: {contact['Nombre']}, Apellido: {contact['Apellido']}, "
+                      f"Teléfono: {contact['Teléfono']}, Correo: {contact['Correo electrónico']}")
+
+            try:
+                contact_to_delete = int(input("Selecciona el número del contacto que deseas eliminar: ")) - 1
+                if 0 <= contact_to_delete < len(matching_contacts):
+                    contact = matching_contacts[contact_to_delete]
+                    contact_list.remove(contact)
+                    print(f"Contacto eliminado: {contact}")
+                else:
+                    print("Número de contacto inválido.")
+            except ValueError:
+                print("Por favor, ingresa un número válido.")
         else:
-            print("No se encontró ningún contacto con ese nombre.")
+            print(f"No se encontró ningún contacto con el nombre '{delete_name}'.")
 
     elif notebook_menu == 12:  # Eliminar un contacto por teléfono
         try:
             delete_phone = int(input("Ingresa el teléfono del contacto a eliminar: "))
-            removed = [contact for contact in contact_list if contact["Teléfono"] == delete_phone]
-            contact_list = [contact for contact in contact_list if contact["Teléfono"] != delete_phone]
-            if removed:
-                for contact in removed:
-                    print(f'Contacto eliminado: {contact}')
+            matching_contacts = [contact for contact in contact_list if contact["Teléfono"] == delete_phone]
+
+            if matching_contacts:
+                print(f"Se encontraron {len(matching_contacts)} contacto(s) con el teléfono '{delete_phone}':")
+                for i, contact in enumerate(matching_contacts):
+                    print(f"{i + 1}. Nombre: {contact['Nombre']}, Apellido: {contact['Apellido']}, "
+                          f"Teléfono: {contact['Teléfono']}, Correo: {contact['Correo electrónico']}")
+
+                try:
+                    contact_to_delete = int(input("Selecciona el número del contacto que deseas eliminar: ")) - 1
+                    if 0 <= contact_to_delete < len(matching_contacts):
+                        contact = matching_contacts[contact_to_delete]
+                        contact_list.remove(contact)
+                        print(f"Contacto eliminado: {contact}")
+                    else:
+                        print("Número de contacto inválido.")
+                except ValueError:
+                    print("Por favor, ingresa un número válido.")
             else:
-                print("No se encontró ningún contacto con ese teléfono.")
+                print(f"No se encontró ningún contacto con el teléfono '{delete_phone}'.")
         except ValueError:
-            print("Por favor, ingresa un número válido.")
+            print("Por favor, ingresa un número de teléfono válido.")
 
     elif notebook_menu == 13:  # Salir
         print('Has salido de la agenda de contactos.')
