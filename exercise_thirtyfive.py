@@ -1,10 +1,10 @@
-# Diccionario para almacenar un contacto temporal
+# Diccionario temporal para almacenar un contacto
 contact_dictionary = dict()
 
 # Lista para almacenar los contactos de la agenda
 contact_list = []
 
-# Menú interactivo
+# Menú interactivo usando un bucle 'while True'
 while True:
     print("\nMenú:")
     print("1. Agregar un contacto")
@@ -16,35 +16,59 @@ while True:
     print("7. Buscar por nombre")
     print("8. Buscar por teléfono")
     print("9. Ver cantidad de contactos")
-    print("10. Eliminar un contacto")
-    print("11. Salir")
+    print("10. Eliminar un contacto por posición")
+    print("11. Eliminar un contacto por nombre")
+    print("12. Eliminar un contacto por teléfono")
+    print("13. Salir")
 
-    # Captura de la opción seleccionada
-    notebook_menu = int(input(f'Selecciona una opción de la agenda:\n'))
+    # Solicitar al usuario que seleccione una opción del menú
+    try:
+        notebook_menu = int(input("Selecciona una opción de la agenda: "))
+    except ValueError:
+        print("Opción no válida. Por favor, ingresa un número.")
+        continue
 
-    if notebook_menu == 1:
-        print(f'\nAgregar Contacto:')
-        # Captura de datos del contacto
-        name_user = input(f'Nombre: ')
-        last_name = input(f'Apellido: ')
+    if notebook_menu == 1:  # Agregar un contacto
+        print('Agregar Contacto:\n')
+        name_user = input('Nombre: ').strip()
+        last_name = input('Apellido: ').strip()
+
         try:
-            age_user = int(input(f'Edad: '))
-            phone_user = int(input(f'Teléfono: '))
+            age_user = int(input('Edad: '))
+            if age_user <= 0:
+                print("La edad debe ser un número positivo. Inténtalo de nuevo.")
+                continue
         except ValueError:
-            print("La edad y el teléfono deben ser números.")
-            continue  # Volver al menú si hay un error
-        email_user = input(f'Correo electrónico: ')
+            print("Edad inválida. Por favor, ingresa solo números.")
+            continue
 
-        # Mostrar los datos ingresados
-        print(f'\nDatos ingresados:')
-        print(f'Nombre: {name_user}')
-        print(f'Apellido: {last_name}')
-        print(f'Edad: {age_user}')
-        print(f'Teléfono: {phone_user}')
-        print(f'Correo electrónico: {email_user}')
+        try:
+            phone_user = int(input('Teléfono: '))
+            if phone_user < 1000:
+                print("El número de teléfono debe tener al menos 4 dígitos. Inténtalo de nuevo.")
+                continue
+        except ValueError:
+            print("Teléfono inválido. Por favor, ingresa solo números.")
+            continue
 
-        # Confirmación de los datos
-        contact_confirmation = input(f'¿Son correctos los datos (Si/No)? ').strip().lower().capitalize()
+        # Generar correo automáticamente
+        generated_email = (
+            name_user[:3].lower() +
+            last_name[-3:].lower() +
+            str(phone_user)[-4:] +
+            "@gmail.com"
+        )
+        print(f"Correo generado automáticamente: {generated_email}")
+
+        # Mostrar los datos ingresados junto con el correo generado
+        print(f'\n Datos ingresados:\n'
+              f'Nombre: {name_user}\n'
+              f'Apellido: {last_name}\n'
+              f'Edad: {age_user}\n'
+              f'Teléfono: {phone_user}\n'
+              f'Correo generado: {generated_email}')
+
+        contact_confirmation = input('¿Son correctos los datos (Si/No)? ').strip().lower()
         if contact_confirmation == "si":
             # Crear el diccionario con los datos confirmados
             contact_dictionary = {
@@ -52,153 +76,128 @@ while True:
                 "Apellido": last_name,
                 "Edad": age_user,
                 "Teléfono": phone_user,
-                "Correo electrónico": email_user
+                "Correo electrónico": generated_email
             }
             contact_list.append(contact_dictionary)  # Agregar el diccionario a la lista
             print('Contacto agregado correctamente.')
         elif contact_confirmation == "no":
-            # Crear el diccionario temporal para corregir datos
-            contact_dictionary = {
-                "Nombre": name_user,
-                "Apellido": last_name,
-                "Edad": age_user,
-                "Teléfono": phone_user,
-                "Correo electrónico": email_user
-            }
-            # Permitir al usuario corregir un campo
-            edited_field = input(f'¿Qué campo deseas corregir (Nombre, Apellido, Edad, Teléfono o Correo electrónico)? ').capitalize()
-            if edited_field in contact_dictionary:
-                # Validar si el campo es Edad o Teléfono (son números enteros)
-                if edited_field in ["Edad", "Teléfono"]:
-                    while True:
-                        try:
-                            new_value = int(input(f'Ingrese el nuevo valor para {edited_field}: '))
-                            if new_value > 0:
-                                contact_dictionary[edited_field] = new_value
-                                break
-                            else:
-                                print("Por favor, ingresa un valor válido mayor que 0.")
-                        except ValueError:
-                            print(f"El valor ingresado para {edited_field} no es válido. Debe ser un número.")
-                else:
-                    # Para otros campos, no es necesario validar el tipo
-                    new_value = input(f'Ingrese el nuevo valor para {edited_field}: ')
-                    contact_dictionary[edited_field] = new_value
-                print(f'{edited_field} ha sido corregido exitosamente.')
-                print(f'Datos actualizados: {contact_dictionary}')
-            else:
-                print('Campo no válido. Asegúrate de ingresar uno de los siguientes: Nombre, Apellido, Edad, Teléfono, Correo electrónico.')
+            print("Se canceló el registro del contacto.")
 
-            # Confirmar si agregar el contacto después de corregir
-            final_confirmation = input(f'¿Deseas agregar el contacto corregido a la lista (Sí/No)? ').strip().lower()
-            if final_confirmation == "sí":
-                contact_list.append(contact_dictionary)  # Agregar el contacto corregido a la lista
-                print('Contacto corregido y agregado a la lista.')
-            else:
-                print('El contacto no se agregó a la lista.')
+    elif notebook_menu == 2:  # Ver todos los contactos
+        print(f'\nTodos los contactos:')
+        if not contact_list:
+            print("No hay contactos en la lista.")
+        else:
+            for i, contact in enumerate(contact_list):
+                print(f'{i + 1}. Nombre: {contact["Nombre"]}, '
+                      f'Apellido: {contact["Apellido"]}, '
+                      f'Edad: {contact["Edad"]}, '
+                      f'Teléfono: {contact["Teléfono"]}, '
+                      f'Correo: {contact["Correo electrónico"]}')
 
-    elif notebook_menu == 2:
-        # Ver todos los contactos
-        if contact_list:
-            print('\nTodos los contactos:')
-            for contact in contact_list:
+    elif notebook_menu == 3:  # Ver un contacto específico
+        try:
+            contact_position = int(input('Ingresa la posición del contacto (empezando de 0): '))
+            if 0 <= contact_position < len(contact_list):
+                contact = contact_list[contact_position]
                 print(f'Nombre: {contact["Nombre"]}, '
                       f'Apellido: {contact["Apellido"]}, '
                       f'Edad: {contact["Edad"]}, '
                       f'Teléfono: {contact["Teléfono"]}, '
-                      f'Correo electrónico: {contact["Correo electrónico"]}')
-        else:
-            print('La lista de contactos está vacía.')
-
-    elif notebook_menu == 3:
-        # Ver un contacto específico
-        contact_position = int(input(f'Ingresa la posición del contacto (empezando de 0): '))
-        if 0 <= contact_position < len(contact_list):
-            contact = contact_list[contact_position]
-            print(f'Nombre: {contact["Nombre"]}, '
-                  f'Apellido: {contact["Apellido"]}, '
-                  f'Edad: {contact["Edad"]}, '
-                  f'Teléfono: {contact["Teléfono"]}, '
-                  f'Correo electrónico: {contact["Correo electrónico"]}')
-        else:
-            print('Posición no válida.')
-
-    elif notebook_menu == 4:
-        # Ver nombre y teléfono de un contacto específico
-        contact_position = int(input(f'Ingresa la posición del contacto (empezando de 0): '))
-        if 0 <= contact_position < len(contact_list):
-            contact = contact_list[contact_position]
-            print(f'Nombre: {contact.get("Nombre")}, Teléfono: {contact.get("Teléfono")}')
-        else:
-            print('Posición no válida.')
-
-    elif notebook_menu == 5:
-        # Ver claves de los contactos
-        if contact_list:
-            print(f'\nClaves de los contactos:')
-            for key in contact_list[0].keys():
-                print(f'- {key}')
-        else:
-            print('La lista de contactos está vacía.')
-
-    elif notebook_menu == 6:
-        # Ver nombres con posiciones
-        if contact_list:
-            print(f'\nNombres con posiciones:')
-            for i, contact in enumerate(contact_list):
-                print(f'Posición {i}: {contact.get("Nombre")}')
-        else:
-            print('La lista de contactos está vacía.')
-
-    elif notebook_menu == 7:
-        # Buscar por nombre
-        search_name = input(f'Ingresa el nombre del contacto a buscar: ')
-        found = False
-        for contact in contact_list:
-            if contact["Nombre"].lower() == search_name.lower():
-                print(f'Contacto encontrado: {contact}')
-                found = True
-        if not found:
-            print('No se encontró ningún contacto con ese nombre.')
-
-    elif notebook_menu == 8:
-        # Buscar por teléfono
-        try:
-            search_phone = int(input(f'Ingresa el teléfono del contacto a buscar: '))
-        except ValueError:
-            print("El teléfono debe ser un número.")
-            continue
-        found = False
-        for contact in contact_list:
-            if contact["Teléfono"] == search_phone:
-                print(f'Contacto encontrado: {contact}')
-                found = True
-        if not found:
-            print('No se encontró ningún contacto con ese teléfono.')
-
-    elif notebook_menu == 9:
-        # Ver cantidad de contactos
-        print(f'Hay {len(contact_list)} contactos en la lista.')
-
-    elif notebook_menu == 10:
-        # Eliminar un contacto
-        print(f'\nEliminar un contacto:')
-        for i, contact in enumerate(contact_list):
-            print(f'{i}. {contact.get("Nombre")}')
-        try:
-            delete_index = int(input(f'Ingrese el índice del contacto que desea eliminar: '))
-            if 0 <= delete_index < len(contact_list):
-                contact_list.pop(delete_index)
-                print('Contacto eliminado correctamente.')
+                      f'Correo: {contact["Correo electrónico"]}')
             else:
-                print('Índice fuera de rango.')
+                print("Posición fuera de rango.")
         except ValueError:
-            print("Debes ingresar un número válido.")
+            print("Por favor, ingresa un número válido.")
 
-    elif notebook_menu == 11:
-        # Salir del programa
+    elif notebook_menu == 4:  # Ver nombre y teléfono de un contacto específico
+        try:
+            contact_position = int(input('Ingresa la posición del contacto (empezando de 0): '))
+            if 0 <= contact_position < len(contact_list):
+                contact = contact_list[contact_position]
+                print(f'Nombre: {contact["Nombre"]}, Teléfono: {contact["Teléfono"]}')
+            else:
+                print("Posición fuera de rango.")
+        except ValueError:
+            print("Por favor, ingresa un número válido.")
+
+    elif notebook_menu == 5:  # Ver claves de los contactos
+        print('\nClaves de los contactos:')
+        if contact_list:
+            for key in contact_list[0].keys():
+                print(key)
+        else:
+            print("No hay contactos en la lista para mostrar claves.")
+
+    elif notebook_menu == 6:  # Ver nombres con posiciones
+        print('\nNombres con posiciones:')
+        if contact_list:
+            for i, contact in enumerate(contact_list):
+                print(f'Posición {i}: {contact["Nombre"]}')
+        else:
+            print("No hay contactos en la lista para mostrar.")
+
+    elif notebook_menu == 7:  # Buscar por nombre
+        search_name = input("Ingresa el nombre del contacto a buscar: ").strip()
+        found_contacts = [contact for contact in contact_list if contact["Nombre"].lower() == search_name.lower()]
+        if found_contacts:
+            for contact in found_contacts:
+                print(contact)
+        else:
+            print("No se encontró ningún contacto con ese nombre.")
+
+    elif notebook_menu == 8:  # Buscar por teléfono
+        try:
+            search_phone = int(input("Ingresa el teléfono del contacto a buscar: "))
+            found_contacts = [contact for contact in contact_list if contact["Teléfono"] == search_phone]
+            if found_contacts:
+                for contact in found_contacts:
+                    print(contact)
+            else:
+                print("No se encontró ningún contacto con ese teléfono.")
+        except ValueError:
+            print("Por favor, ingresa un número válido.")
+
+    elif notebook_menu == 9:  # Ver cantidad de contactos
+        print(f'Cantidad de contactos: {len(contact_list)}')
+
+    elif notebook_menu == 10:  # Eliminar un contacto por posición
+        try:
+            delete_index = int(input("Ingresa el índice del contacto a eliminar: "))
+            if 0 <= delete_index < len(contact_list):
+                removed_contact = contact_list.pop(delete_index)
+                print(f'Contacto eliminado: {removed_contact}')
+            else:
+                print("Índice fuera de rango.")
+        except ValueError:
+            print("Por favor, ingresa un número válido.")
+
+    elif notebook_menu == 11:  # Eliminar un contacto por nombre
+        delete_name = input("Ingresa el nombre del contacto a eliminar: ").strip()
+        removed = [contact for contact in contact_list if contact["Nombre"].lower() == delete_name.lower()]
+        contact_list = [contact for contact in contact_list if contact["Nombre"].lower() != delete_name.lower()]
+        if removed:
+            for contact in removed:
+                print(f'Contacto eliminado: {contact}')
+        else:
+            print("No se encontró ningún contacto con ese nombre.")
+
+    elif notebook_menu == 12:  # Eliminar un contacto por teléfono
+        try:
+            delete_phone = int(input("Ingresa el teléfono del contacto a eliminar: "))
+            removed = [contact for contact in contact_list if contact["Teléfono"] == delete_phone]
+            contact_list = [contact for contact in contact_list if contact["Teléfono"] != delete_phone]
+            if removed:
+                for contact in removed:
+                    print(f'Contacto eliminado: {contact}')
+            else:
+                print("No se encontró ningún contacto con ese teléfono.")
+        except ValueError:
+            print("Por favor, ingresa un número válido.")
+
+    elif notebook_menu == 13:  # Salir
         print('Has salido de la agenda de contactos.')
         break
 
     else:
-        print('Opción no válida. Por favor, selecciona una opción del menú.')
+        print("Opción no válida. Por favor, selecciona una opción del menú.")
