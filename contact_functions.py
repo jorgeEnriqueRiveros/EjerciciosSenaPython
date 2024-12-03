@@ -2,7 +2,6 @@
 
 def add_contact(contact_list):
     """Función para agregar un nuevo contacto a la lista."""
-    print('Agregar Contacto:\n')
     name_user = input('Nombre: ').strip()
     last_name = input('Apellido: ').strip()
 
@@ -59,7 +58,6 @@ def add_contact(contact_list):
 
 def view_all_contacts(contact_list):
     """Función para mostrar todos los contactos."""
-    print(f'\nTodos los contactos:')
     if not contact_list:
         print("No hay contactos en la lista.")
     else:

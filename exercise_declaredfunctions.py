@@ -1,3 +1,4 @@
+import math
 def saludar():
     print(f'Hola mundo, estoy en una funcion')
 
@@ -42,3 +43,6 @@ def obtener_datos():
 
 datos = obtener_datos()
 print(f'Datos ingresados: {datos}')
+
+print(f'Este es el valor de pi: {math.pi}')
+print(f'Este es el valor de euler: {math.e}')

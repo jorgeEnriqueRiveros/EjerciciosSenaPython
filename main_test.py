@@ -1,4 +1,6 @@
 import test_module
+
+
 number1 = float(input(f'Ingrese el primer numero:\n'))
 number2 = float(input(f'Ingrese el segundo numero:\n'))
 
