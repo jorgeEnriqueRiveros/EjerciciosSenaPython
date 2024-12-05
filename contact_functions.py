@@ -1,5 +1,4 @@
 # Archivo: contact_functions.py
-
 def add_contact(contact_list):
     """Función para agregar un nuevo contacto a la lista."""
     name_user = input('Nombre: ').strip()
@@ -99,7 +98,6 @@ def view_name_and_phone(contact_list):
     except ValueError:
         print("Por favor, ingresa un número válido.")
 
-
 def view_keys(contact_list):
     """Función para ver las claves de un contacto."""
     if not contact_list:
@@ -109,7 +107,6 @@ def view_keys(contact_list):
     contact = contact_list[0]  # Mostrar claves de cualquier contacto
     for key in contact.keys():
         print(key)
-
 
 def view_names_with_positions(contact_list):
     """Función para ver nombres de contactos con su posición."""
@@ -147,7 +144,6 @@ def search_by_phone(contact_list):
     except ValueError:
         print("Por favor, ingresa un número de teléfono válido.")
 
-
 def count_contacts(contact_list):
     """Función para ver la cantidad de contactos."""
     print(f'Número de contactos en la lista: {len(contact_list)}')
@@ -184,7 +180,6 @@ def delete_contact_by_name(contact_list):
               f'Apellido: {contact["Apellido"]}, '
               f'Teléfono: {contact["Teléfono"]}, '
               f'Correo: {contact["Correo electrónico"]}')
-
     try:
         delete_index = int(input("Selecciona el índice del contacto a eliminar: "))
         if delete_index in [index for index, _ in matches]:
@@ -227,4 +222,3 @@ def delete_contact_by_phone(contact_list):
             print("Por favor, ingresa un número válido para el índice.")
     except ValueError:
         print("Por favor, ingresa un número de teléfono válido.")
-
