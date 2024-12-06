@@ -137,11 +137,11 @@ while True:
             print("No hay contactos en la lista.")
         else:
             for i, contact in enumerate(contact_list):
-                print(f'Posición {i + 1}: {contact["Nombre"]}')
+                print(f'Posición {i + 1}: {contact.get("Nombre")}')
 
     elif notebook_menu == 7:  # Buscar por nombre
         print(f'\nBuscar contacto por nombre')
-        search_name = input("Ingresa el nombre del contacto a buscar: ").strip()
+        search_name = input("Ingresa el nombre del contacto a buscar: ").strip().lower()
         found_contact = False
         for contact in contact_list:
             if contact["Nombre"].lower() == search_name.lower():
