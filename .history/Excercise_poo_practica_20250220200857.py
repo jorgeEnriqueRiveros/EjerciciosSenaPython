@@ -18,24 +18,8 @@ class Product:
             self.__stock += stock
             return f'Al producto {self.__name}\n Se han agregado {stock} unidades'
         else:
-            print("Error: La cantidad de stock debe ser un valor positivo.")
+
     def buy(self, stock):
         if 0 < stock <= self.__stock:
             self.__stock -= stock
             return f'Compra exitosa de {self.__name}\n de estas {stock} unidades'
-            print(f'Quedan estas unidades disponibles:\n')
-            self.show_info()
-        else:
-            print("Error: No hay suficiente stock disponible.")
-
-product1 = Product('Pantalon Tommy',70000,100)
-print(product1.show_info())
-
-product1.update_price(65000)
-print(product1.show_info())
-
-product1.add_stock(50)
-print(product1.show_info())
-
-product1.buy(30)
-print(product1.buy(30))

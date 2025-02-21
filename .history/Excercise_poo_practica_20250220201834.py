@@ -38,4 +38,4 @@ product1.add_stock(50)
 print(product1.show_info())
 
 product1.buy(30)
-print(product1.buy(30))
+print(product1.show_info())

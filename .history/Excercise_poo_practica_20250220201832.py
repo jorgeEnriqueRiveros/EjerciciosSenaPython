@@ -28,7 +28,7 @@ class Product:
         else:
             print("Error: No hay suficiente stock disponible.")
 
-product1 = Product('Pantalon Tommy',70000,100)
+product1 = Product('PantaloTommy',70000,100)
 print(product1.show_info())
 
 product1.update_price(65000)
@@ -38,4 +38,4 @@ product1.add_stock(50)
 print(product1.show_info())
 
 product1.buy(30)
-print(product1.buy(30))
+print(product1.show_info())

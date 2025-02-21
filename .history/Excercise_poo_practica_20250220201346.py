@@ -26,16 +26,5 @@ class Product:
             print(f'Quedan estas unidades disponibles:\n')
             self.show_info()
         else:
-            print("Error: No hay suficiente stock disponible.")
 
-product1 = Product('Pantalon Tommy',70000,100)
-print(product1.show_info())
-
-product1.update_price(65000)
-print(product1.show_info())
-
-product1.add_stock(50)
-print(product1.show_info())
-
-product1.buy(30)
-print(product1.buy(30))
+buzos = Product()
