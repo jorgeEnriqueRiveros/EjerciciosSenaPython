@@ -19,11 +19,10 @@ if __name__ == '__main__':
     animal2 = Lista_Animales('Lola','Conejo','Hembra',5)
     animal3 = Lista_Animales('Firulais','Perro','Macho',10)
     animal4 = Lista_Animales('Chester','Gato','Macho',7)
-    
+print(animal1.especie())
     animal4.dormir()
     animal3.comer('croquetas')
     animal2._Lista_Animales__correr()
     animal1.comer('pasto')
-    
     
 

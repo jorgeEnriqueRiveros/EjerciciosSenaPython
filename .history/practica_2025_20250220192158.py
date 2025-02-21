@@ -25,5 +25,4 @@ if __name__ == '__main__':
     animal2._Lista_Animales__correr()
     animal1.comer('pasto')
     
-    
 

@@ -22,8 +22,8 @@ if __name__ == '__main__':
     
     animal4.dormir()
     animal3.comer('croquetas')
-    animal2._Lista_Animales__correr()
+    _:Lista_Animales.__correr(animal2)
     animal1.comer('pasto')
     
-    
+
 
