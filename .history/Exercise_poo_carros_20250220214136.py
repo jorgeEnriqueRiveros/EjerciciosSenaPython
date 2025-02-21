@@ -43,22 +43,7 @@ class Coche:
             print("❌ No se puede añadir una cantidad negativa de combustible.")
 
 # Crear un coche
-mi_coche = Coche("Toyota", "Corolla", 50)
-
-# Mostrar información inicial
-mi_coche.mostrar_info()
-
-# Acelerar y mostrar información
-mi_coche.acelerar(60)
-mi_coche.mostrar_info()
-
-# Frenar el coche
-mi_coche.frenar()
-mi_coche.mostrar_info()
-
-# Repostar combustible
-mi_coche.repostar(20)
-mi_coche.mostrar_info()
+#
 
 # Cambiar la marca del coche
 mi_coche.marca = "Honda"

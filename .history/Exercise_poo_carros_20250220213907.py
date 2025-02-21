@@ -4,7 +4,7 @@ class Coche:
         self.__modelo = modelo
         self.__velocidad = 0  # El coche inicia detenido
         self.__combustible = combustible
-
+        
     @property
     def marca(self):
         return self.__marca
@@ -58,10 +58,4 @@ mi_coche.mostrar_info()
 
 # Repostar combustible
 mi_coche.repostar(20)
-mi_coche.mostrar_info()
-
-# Cambiar la marca del coche
-mi_coche.marca = "Honda"
-
-# Mostrar información modificada
 mi_coche.mostrar_info()

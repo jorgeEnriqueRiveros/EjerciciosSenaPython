@@ -63,5 +63,4 @@ mi_coche.mostrar_info()
 # Cambiar la marca del coche
 mi_coche.marca = "Honda"
 
-# Mostrar información modificada
-mi_coche.mostrar_info()
+# Mostrar información modificadami_coche.mostrar_info()
